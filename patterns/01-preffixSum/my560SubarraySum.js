@@ -98,7 +98,7 @@ var subarraySum = function(nums, k) {
 
           Ou seja: Se já vimos antes essa soma previousSum, então o trecho entre lá e aqui soma k.
        */
-      let previousSum = [currentSum -  k];
+      let previousSum = (currentSum -  k);
 
       if(sumFrenquency[previousSum]){
         /*
