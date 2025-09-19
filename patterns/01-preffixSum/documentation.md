@@ -111,7 +111,9 @@ console.log("Prefix Sum:", prefixSum); // [2, 6, 11, 14]
 // Função para obter soma de um intervalo usando Prefix Sum
 function rangeSum(L, R) {
   if (L === 0) {
-    // Se começa no índice 0, a soma já está em prefixSum[R]
+    // Se começa no índice 0, a soma já está em prefixSum
+    //No need to subtract anything—you're starting from the beginning.
+    // [R]
     return prefixSum[R];
   } else {
     // Caso contrário, fazemos a diferença para obter apenas o intervalo desejado
