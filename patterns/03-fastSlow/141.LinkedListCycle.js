@@ -1,43 +1,48 @@
-class Node{
-    constructor(value){
-        this.value = value;
-        this.next = null;
-    }
+class Node {
+  constructor(data) {
+    this._id = Math.random().toString(36).substring(2, 12); 
+    this.data = data;
+    this.next = null;
+    this.prev = null;
+  }
 }
 
 class LinkedList {
-    constructor(){
-        this.head = null;
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+
+  append(data) {
+    let newNode = new Node(data);
+
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      let currentNode = this.tail;
+      currentNode.next = newNode;
+      newNode.prev = currentNode;
+      this.tail = newNode;
     }
+  }
 
-    appened(value){
-        if(value=== null) return;
-
-        let newNode = new Node(value);
-
-        if(this.head === null){
-            this.head = newNode;
-            return;
-        }
-
-        let currentNode = this.head;
-
-        while(currentNode.next){
-            currentNode = currentNode.next;
-        }
-
-        currentNode.next = newNode;
+  print() {
+    let currentNode = this.head;
+    while (currentNode) {
+      console.log(currentNode.data.name);
+      currentNode = currentNode.next;
     }
+  }
 
-    print(){
-        let currentNode = this.head;
-        while(currentNode){
-            console.log(currentNode.value);
-            currentNode = currentNode.next;
-        }
+  printReverse() {
+    let currentNode = this.tail;
+    while (currentNode) {
+      console.log(currentNode.data.name);
+      currentNode = currentNode.prev;
     }
+  }
 }
-
 
 
 /*141. Linked List Cycle
@@ -88,26 +93,48 @@ Follow up: Can you solve it using O(1) (i.e. constant) memory?
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
-    // empty list
-    if(!head) return false;
+const hasCycle = (head) => {
+  if (!head) return false;
 
-     let slow = head;
-     let fast = head;
-    
-     while(fast && fast.next){
+  let slow = head;
+  let fast = head;
 
-        slow = slow.next;   // move 1 step
-        fast = fast.next.next; // move 2 steps
-        
-        //cycle detected
-        if(slow  === fast) return true;
-        
-     }
-   
-    return false;   
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    if (slow === fast) return true; //  comparison
+  }
+
+  return false;
 };
 
+
+
+
+//===============================================================================================
+//Runing
+//===============================================================================================
+// Create list
+const list = new LinkedList();
+list.append({ name: 'joe', email: 'test@yahoo.com' });
+list.append({ name: 'Billit', email: 'bi@yahoo.com' });
+list.append({ name: 'Abel', email: 'abel@yahoo.com' });
+
+console.log("Forward:");
+list.print();
+
+console.log("Reverse:");
+list.printReverse();
+
+list.tail.next = list.head; // 👈 This creates the cycle!
+
+
+// Check for cycles (should return false)
+console.log("Has cycle?", hasCycle(list.head));
+
+
+/*
 
 
 const createLinkedList = (arr) =>{
@@ -127,3 +154,5 @@ console.log("==================\nTest Case\n==================");
 console.log("Case1\nInput:", [3,2,0,-4], "\nOutput: ", hasCycle(createLinkedList([3,2,0,-4])), "\nExpect: 1\n==================");
 console.log("Case2\nInput:", [1,2], "\nOutput: ", hasCycle([1,2]), "\nExpect: 0\n==================");
 console.log("Case3\nInput:", [1], "\nOutput: ", hasCycle([1]), "\nExpect: -1\n==================");
+
+*/
