@@ -116,6 +116,7 @@ this pattern uses a stack to find:
 
 better O(n)
  start the stack with -1
+ 
  ```javascript
 
  var stack = [-1, -1, -1, -1, -1];
@@ -124,7 +125,7 @@ better O(n)
 
   so verify each elemnet great then -1 and pop it in the stack:
 
-    ![](./images/monotonic2.png)
+  ![](./images/monotonic2.png)
 
 ### Exercises
 

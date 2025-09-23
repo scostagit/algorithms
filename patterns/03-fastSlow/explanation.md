@@ -54,6 +54,27 @@ class LinkedList {
   }
 }
 
+
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+const hasCycle = (head) => {
+  if (!head) return false;
+
+  let slow = head;
+  let fast = head;
+
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+
+    if (slow === fast) return true; //  comparison
+  }
+
+  return false;
+};
+
 // Example usage:
 const list = new LinkedList();
 list.append({ name: 'joe', email: 'test@yahoo.com' });
@@ -66,7 +87,11 @@ list.print();
 console.log("Reverse:");
 list.printReverse();
 
-console.log(list);
+list.tail.next = list.head; // 👈 This creates the cycle!
+
+
+// Check for cycles (should return false)
+console.log("Has cycle?", hasCycle(list.head));
 ```
 
 ### Key Changes:
@@ -76,4 +101,4 @@ console.log(list);
 * When appending, it connects both `next` and `prev` pointers.
 * Added a `printReverse()` method to demonstrate traversal via the `prev` reference.
 
-Let me know if you want to add node deletion or insertion at arbitrary positions.
+
