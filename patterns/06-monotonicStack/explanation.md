@@ -1,7 +1,16 @@
 
 # Monotonic Stack
 
-Absolutely! Let's break down the **Monotonic Stack** pattern using **easy English** and simple examples. You don’t need to be a coding expert to get this — I’ll explain it like you're brand new to this idea.
+## Definition
+
+In clear English, **monotonic** means something that always goes in **one direction** — it **never changes direction**.
+
+For example:
+
+* A **monotonic increasing** list: The numbers always go up or stay the same (e.g., 1, 2, 2, 3, 4).
+* A **monotonic decreasing** list: The numbers always go down or stay the same (e.g., 9, 7, 7, 5, 2).
+
+So, if something is **monotonic**, it either keeps increasing or keeps decreasing  but it never switches back and forth.
 
 ---
 
@@ -370,5 +379,158 @@ for each element in the array:
     push the current element to stack
 ```
 
+![](./image.png)
+
+## Links
 
 [Good explaination](https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/introduction-to-monotonic-stack?gad_source=2&gad_campaignid=21052024757&gclid=EAIaIQobChMI8LeFucrxjwMVCJKDBx0TSQdYEAEYASAAEgKspfD_BwE)
+
+[Water Trapped Units](https://www.youtube.com/watch?v=15OuNilu0r0)
+
+[Quickly Explantion](https://www.youtube.com/shorts/SiomoI83jIY)
+
+[Google Interview](https://www.youtube.com/watch?v=DmHEl0v_hO0)
+
+
+
+
+
+
+
+Claro! Vamos lá!
+
+---
+
+## 🧠 O que é um **Monotonic Stack**?
+
+### ✅ Explicação simples
+
+Imagina que você está empilhando **caixas** (como se fosse uma torre). Você quer que essa torre tenha uma **ordem** especial:
+
+* Ou as caixas vão ficando **maiores** conforme você empilha (do menor para o maior).
+* Ou vão ficando **menores** (do maior para o menor).
+
+Essa pilha é chamada de **pilha monótona** (do inglês: **monotonic stack**), porque ela **mantém uma ordem** (crescente ou decrescente).
+
+Usamos esse tipo de pilha para resolver **problemas que precisam comparar elementos vizinhos** de uma lista ou array, como:
+
+* Qual é o **próximo número maior**?
+* Qual é o **último número menor**?
+* Etc.
+
+---
+
+## 📌 Exemplo prático:
+
+Vamos resolver um problema bem comum:
+
+### 🔍 Problema:
+
+Dado um array de números, para cada número, diga qual é o **próximo número maior à sua direita**.
+Se não tiver nenhum número maior depois, diga `-1`.
+
+Exemplo:
+
+```js
+Entrada:  [2, 1, 5, 3, 6]
+Saída:    [5, 5, 6, 6, -1]
+```
+
+---
+
+## 📄 Código em JavaScript (com explicações linha por linha):
+
+```js
+function proximoMaior(nums) {
+  const stack = [];      // pilha para guardar os índices dos números
+  const resultado = new Array(nums.length).fill(-1); // array com -1 como padrão
+
+  for (let i = 0; i < nums.length; i++) {
+    // Enquanto a pilha NÃO estiver vazia e o número atual for MAIOR
+    // do que o número que está no topo da pilha
+    while (stack.length > 0 && nums[i] > nums[stack[stack.length - 1]]) {
+      const indiceMenor = stack.pop();         // tira o topo da pilha (índice anterior)
+      resultado[indiceMenor] = nums[i];        // atualiza o resultado: achamos o próximo maior!
+    }
+
+    stack.push(i);  // adiciona o índice atual na pilha
+  }
+
+  return resultado;
+}
+```
+
+---
+
+## 🧩 Explicando passo a passo com o exemplo `[2, 1, 5, 3, 6]`:
+
+### Início:
+
+* `stack = []` (vazia)
+* `resultado = [-1, -1, -1, -1, -1]`
+
+---
+
+### 🔄 Laço começa:
+
+#### i = 0 → `nums[0] = 2`
+
+* Pilha está vazia → adiciona índice `0`
+* `stack = [0]`
+
+---
+
+#### i = 1 → `nums[1] = 1`
+
+* `1` **não** é maior que `2` (topo da pilha)
+* Adiciona índice `1`
+* `stack = [0, 1]`
+
+---
+
+#### i = 2 → `nums[2] = 5`
+
+* `5 > 1` (índice 1 na pilha) → tira `1` da pilha, `resultado[1] = 5`
+* `5 > 2` (índice 0 na pilha) → tira `0` da pilha, `resultado[0] = 5`
+* Adiciona índice `2`
+* `stack = [2]`
+* `resultado = [5, 5, -1, -1, -1]`
+
+---
+
+#### i = 3 → `nums[3] = 3`
+
+* `3 < 5` → não faz nada
+* Adiciona `3` na pilha
+* `stack = [2, 3]`
+
+---
+
+#### i = 4 → `nums[4] = 6`
+
+* `6 > 3` → tira `3` da pilha, `resultado[3] = 6`
+* `6 > 5` → tira `2` da pilha, `resultado[2] = 6`
+* Adiciona `4` na pilha
+* `stack = [4]`
+* `resultado = [5, 5, 6, 6, -1]`
+
+---
+
+### ✅ Resultado final:
+
+```js
+[5, 5, 6, 6, -1]
+```
+
+---
+
+## 📦 Resumo:
+
+* Usamos uma **pilha** para guardar os **índices** dos números.
+* A pilha vai **guardando os candidatos** que ainda não acharam seu "próximo maior".
+* Quando encontramos um número **maior que o do topo da pilha**, resolvemos a resposta daquele índice.
+
+---
+
+
+![](./debuging.png)
