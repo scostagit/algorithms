@@ -41,28 +41,33 @@ Follow up: Could you find an O(nums1.length + nums2.length) solution?
  * @return {number[]}
  */
 var nextGreaterElement = function(nums1, nums2) {
-   
-   let stack = [];
-   let map = {};
 
-    for(let i = nums2.length -1; i >=0; i--){
-      
-      while(stack.length  && stack[stack.length-1] <= nums2[i]){
-        stack.pop();       
-      }
+    let result = [];
 
-      if(stack.length === 0){
-        map[nums2[i]] = -1;
-      }else{
-        map[nums2[i]] = stack[stack.length-1];
-      }
+    for(let i = 0; i < nums1.length; i ++){
 
-      stack.push(nums2[i]);
+        let found = false;
+        let nextGreater = -1;
+                
+        for(let j = 0; j < nums2.length; j++){
+            
+            if(nums2[j] === nums1[i]){
+                found = true;
+            }
 
-    }
-   
+            if(found && nums2[j] > nums1[i]){
+                nextGreater = nums2[j]
+                break;
+            }
 
-   return nums1.map(num=> map[num]);
+        }
+
+        result.push(nextGreater);
+   }
+
+
+    return result;
+
 };
 
 console.log("496. Next Greater Element I\n");
@@ -72,9 +77,11 @@ console.log("-------------------------------------------------------------------
 console.log("Input: (nums1 = ",[4,1,2], ", nums2 = ",[1,3,4,2],")\nOutput:",nextGreaterElement([4,1,2],[1,3,4,2]),"\nExpected: ",[-1,3,-1]);
 console.log("---------------------------------------------------------------------------------");
 
-
+/*
 console.log("\n")
 console.log("Test Case 01  --");
 console.log("---------------------------------------------------------------------------------");
 console.log("Input: (nums1 = ",[2,4], ", nums2 = ",[1,2,3,4],")\nOutput:",nextGreaterElement([2,4],[1,2,3,4]),"\nExpected: ",[3,-1]);
 console.log("---------------------------------------------------------------------------------");
+*/
+
