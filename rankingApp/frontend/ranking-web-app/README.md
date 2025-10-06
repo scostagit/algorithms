@@ -68,3 +68,129 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+
+| Hook        | Use Case                      | Example in To-Do App           |
+| ----------- | ----------------------------- | ------------------------------ |
+| `useEffect` | Side effects (load/save, API) | Load tasks from localStorage   |
+| `useMemo`   | Performance optimization      | Cache filtered/computed values |
+
+
+
+
+To improve the performance of your React function components and avoid unnecessary **re-renders or recalculations**, `useMemo` and `useCallback` are powerful tools—but they solve **different problems**. Let’s break it down so you can choose and apply them correctly.
+
+---
+
+## 🔁 Why Your Component Might Be Re-rendering
+
+React re-renders a component when:
+
+* Its **state or props change**
+* Its **parent component re-renders**, causing it to re-render too
+
+If inside the component, you’re **creating new objects or functions on every render**, they’ll appear “changed” every time, even if the values are the same. This can lead to:
+
+* Unnecessary child renders
+* Re-running expensive calculations
+
+---
+
+## 🧠 `useMemo` — Memoize **Values**
+
+Use `useMemo` to **memoize expensive computations** or avoid recalculating objects/arrays unless dependencies change.
+
+### ✅ When to use:
+
+* You have an expensive calculation
+* You’re passing computed objects/arrays to children or hooks
+
+### Example:
+
+```js
+const sortedItems = useMemo(() => {
+  return items.sort((a, b) => a.value - b.value);
+}, [items]);
+```
+
+Without `useMemo`, this would re-run on every render even if `items` didn’t change.
+
+---
+
+## 🔗 `useCallback` — Memoize **Functions**
+
+Use `useCallback` to **prevent re-creating functions** on every render.
+
+### ✅ When to use:
+
+* You pass a function to a child component
+* You want referential equality for dependencies in `useEffect`, etc.
+
+### Example:
+
+```js
+const handleClick = useCallback(() => {
+  doSomething(item.id);
+}, [item.id]);
+```
+
+Without `useCallback`, `handleClick` is a new function every render—even if `item.id` hasn't changed.
+
+---
+
+## 🔥 Example Putting It Together
+
+```jsx
+const ParentComponent = () => {
+  const [count, setCount] = useState(0);
+
+  const items = useMemo(() => {
+    return generateItems(); // expensive function
+  }, []);
+
+  const handleItemClick = useCallback((id) => {
+    console.log("Clicked", id);
+  }, []);
+
+  return (
+    <>
+      <button onClick={() => setCount(c => c + 1)}>Increment</button>
+      <ChildComponent items={items} onItemClick={handleItemClick} />
+    </>
+  );
+};
+
+const ChildComponent = React.memo(({ items, onItemClick }) => {
+  console.log("Child rendered");
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id} onClick={() => onItemClick(item.id)}>{item.name}</li>
+      ))}
+    </ul>
+  );
+});
+```
+
+In this example:
+
+* `generateItems()` only runs once (due to `useMemo`)
+* `handleItemClick` stays referentially stable (due to `useCallback`)
+* `ChildComponent` is wrapped with `React.memo` to avoid re-renders unless `items` or `onItemClick` change
+
+---
+
+## 🧪 Bonus Tips
+
+* Profile with React DevTools to see what’s causing re-renders
+* Avoid overusing `useMemo`/`useCallback`—they add overhead. Use only where there's a measurable benefit
+* Consider `React.memo()` for child components that don't need to re-render often
+
+---
+
+If you have a specific example/component you want help optimizing, I can walk through it directly.
