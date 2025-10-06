@@ -20,7 +20,10 @@ const TodoList = () => {
     }, [tasks]);
 
     // Add a new task
-    const handleAddTask = useCallback(() => {
+    const handleAddTask = useCallback((e) => {
+        
+        e.preventDefault();
+
         if (newTask.trim() === '') return;
         const task = {
             id: Date.now(),
