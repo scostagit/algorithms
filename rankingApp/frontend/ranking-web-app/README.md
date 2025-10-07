@@ -194,3 +194,142 @@ In this example:
 ---
 
 If you have a specific example/component you want help optimizing, I can walk through it directly.
+
+
+
+Here are the **core concepts of React** that form the foundation of building applications with it:
+
+---
+
+### 1. **Components**
+
+* React apps are built using **components**, which are reusable, self-contained pieces of UI.
+* Types:
+
+  * **Functional Components** (using hooks)
+  * **Class Components** (older, less common now)
+
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+---
+
+### 2. **JSX (JavaScript XML)**
+
+* A syntax extension that allows writing HTML-like code in JavaScript.
+* JSX gets transpiled to `React.createElement()` calls.
+
+```jsx
+const element = <h1>Hello, world!</h1>;
+```
+
+---
+
+### 3. **Props (Properties)**
+
+* Props are inputs to components.
+* They are **read-only** and passed **from parent to child**.
+
+```jsx
+<MyComponent title="Hello" />
+```
+
+---
+
+### 4. **State**
+
+* State is data managed **within a component** that can change over time.
+* Functional components use the `useState` hook.
+
+```jsx
+const [count, setCount] = useState(0);
+```
+
+---
+
+### 5. **Hooks**
+
+* Functions that let functional components use React features like state and lifecycle.
+* Common hooks:
+
+  * `useState`
+  * `useEffect`
+  * `useContext`
+
+---
+
+### 6. **Lifecycle Methods (for Class Components) / Effects (for Functional Components)**
+
+* Code that runs at specific points in a component's life.
+* In functional components, you use `useEffect()` to run side effects (e.g., fetching data, subscribing).
+
+```jsx
+useEffect(() => {
+  // Run on mount
+  fetchData();
+}, []); // Empty array means run once
+```
+
+---
+
+### 7. **Virtual DOM**
+
+* React maintains a lightweight **Virtual DOM** to efficiently update the UI.
+* When state or props change, React:
+
+  * Creates a new virtual DOM
+  * Diffs it with the old one
+  * Applies minimal updates to the real DOM
+
+---
+
+### 8. **Unidirectional Data Flow**
+
+* Data flows **one way**: from parent → child.
+* Child components can trigger callbacks to inform parents.
+
+---
+
+### 9. **Conditional Rendering**
+
+* You can render different UI elements based on conditions.
+
+```jsx
+{isLoggedIn ? <Dashboard /> : <Login />}
+```
+
+---
+
+### 10. **Lists and Keys**
+
+* Used to render multiple items efficiently.
+* Each item should have a **unique `key`**.
+
+```jsx
+{items.map(item => <li key={item.id}>{item.name}</li>)}
+```
+
+---
+
+### 11. **Context API**
+
+* Allows you to **share state globally** (like theme or auth info) without passing props manually.
+
+```jsx
+const ThemeContext = React.createContext('light');
+```
+
+---
+
+### 12. **React Router (for navigation)**
+
+* Enables routing in single-page applications (SPAs).
+
+```jsx
+<Route path="/about" element={<About />} />
+```
+
+---

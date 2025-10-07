@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback  } from "react";
 import  Item  from './Task.component'
 
 const TodoList = () => {
+    
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
 
@@ -21,15 +22,17 @@ const TodoList = () => {
 
     // Add a new task
     const handleAddTask = useCallback((e) => {
-        
+
         e.preventDefault();
 
         if (newTask.trim() === '') return;
+
         const task = {
             id: Date.now(),
             text: newTask,
             completed: false,
         };
+
         setTasks([...tasks, task]);
         setNewTask('');
     })
@@ -63,6 +66,7 @@ const TodoList = () => {
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
             />
+
             <button onClick={handleAddTask}>Add</button>
 
             <ul style={{ listStyle: 'none', paddingLeft: 0 }}>  
