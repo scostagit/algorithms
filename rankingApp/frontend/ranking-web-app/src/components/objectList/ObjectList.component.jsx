@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { getObjects } from '../../services';
+//import { getObjects } from '../../services/productApi';
+
+import {
+  getProducts 
+} from '../../apis/productApi';
 
 const ObjectList = () => {
   const [objects, setObjects] = useState([]);
@@ -7,8 +11,9 @@ const ObjectList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const data = await getObjects();
+      try {        
+        const data = await getProducts();// getObjects();        
+        console.log(data);
         setObjects(data);
       } catch (error) {
         console.error('Error fetching objects:', error);

@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import Layout from '../layout/Layout.component';
-import ProductsPage from '../../pages/Products.Page';
-import LoginPage from '../../pages/Login.Page';
-import TasksPage from '../../pages/Tasks.page';
+import {
+     ProductsPage, 
+     LoginPage, 
+     TasksPage,
+     ProductManagerPage
+}  from '../../pages';
 
 const AppRoutes = () => {
   const { user, loading } = useContext(AuthContext);
@@ -22,6 +25,7 @@ const AppRoutes = () => {
         <>
           <Route element={<Layout />}>
             <Route path="/products" element={<ProductsPage />} />
+            <Route path="/product-manager" element={<ProductManagerPage />} />
             <Route path="/tasks" element={<TasksPage />} />
             {/* Add more routes inside layout here */}
           </Route>

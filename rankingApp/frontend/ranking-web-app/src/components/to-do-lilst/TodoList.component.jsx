@@ -58,7 +58,7 @@ const TodoList = () => {
 
     return (
         <div style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}>
-            <h2>To-Do List</h2>
+            <h4>Tasks List</h4>
 
             <input
                 type="text"

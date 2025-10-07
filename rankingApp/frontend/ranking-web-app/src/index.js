@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
-import {ThemedComponent} from './components';
 import { AuthProvider, AuthContext } from './contexts/AuthContext';
 
 
@@ -14,8 +13,7 @@ root.render(
   <React.StrictMode>
       <BrowserRouter>
         <ThemeProvider>
-          <AuthProvider>
-              <ThemedComponent /> 
+          <AuthProvider>            
               <App />
           </AuthProvider>
         </ThemeProvider>
