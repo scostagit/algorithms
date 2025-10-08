@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback  } from "react";
-import  Item  from './Task.component'
+import  Item  from './TaskItem.component'
 
 const TodoList = () => {
     
@@ -7,11 +7,14 @@ const TodoList = () => {
   const [newTask, setNewTask] = useState('');
 
 
-  //  Load tasks from localStorage on mount
-    useEffect(() => {
-        const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-        if (storedTasks){
+   //  Load tasks from localStorage on mount
+  useEffect(() => {
+        try {
+            const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
             setTasks(storedTasks);
+        } catch (error) {
+            console.error('Error parsing tasks from localStorage:', error);
+            setTasks([]);
         }
     }, []);
 
@@ -35,7 +38,7 @@ const TodoList = () => {
 
         setTasks([...tasks, task]);
         setNewTask('');
-        
+
     },[newTask, tasks])
 
     // Toggle task completion
@@ -52,8 +55,7 @@ const TodoList = () => {
         setTasks(filteredTasks);
     },[tasks])
   
-    const completedCount = useMemo(() => {
-        console.log('Calculating completed tasks...');
+    const completedCount = useMemo(() => {    
         return tasks.filter(task => task.completed).length;
     }, [tasks]);
 
