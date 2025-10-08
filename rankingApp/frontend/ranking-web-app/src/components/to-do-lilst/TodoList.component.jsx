@@ -35,7 +35,8 @@ const TodoList = () => {
 
         setTasks([...tasks, task]);
         setNewTask('');
-    })
+        
+    },[newTask, tasks])
 
     // Toggle task completion
     const handleToggleTask = (id) => {
@@ -49,7 +50,7 @@ const TodoList = () => {
     const handleDeleteTask = useCallback((id) => {
         const filteredTasks = tasks.filter(task => task.id !== id);
         setTasks(filteredTasks);
-    })
+    },[tasks])
   
     const completedCount = useMemo(() => {
         console.log('Calculating completed tasks...');
