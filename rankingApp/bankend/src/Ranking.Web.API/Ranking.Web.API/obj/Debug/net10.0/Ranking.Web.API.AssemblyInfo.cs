@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ranking.Web.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+645a29f99ac8703b7a90e030d7095a1f4cd6c195")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ranking.Web.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ranking.Web.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Collections.Concurrent;
 
 namespace Ranking.Web.API.Controllers
 {
@@ -12,15 +14,43 @@ namespace Ranking.Web.API.Controllers
         ];
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            if (RateLimiter.IsLocked("GetWeatherForecast"))
+                return StatusCode(429, "Too many requests");
+
+            var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+
+            return Ok(result);
         }
+    }
+
+
+    static class RateLimiter
+    {
+        const int MAX_REQUEST_PER_SECOND = 2;
+
+        static ConcurrentDictionary<string, List<DateTime>> _requests = new ();
+
+        public static bool IsLocked(string endpoint)
+        {
+            var newRequest = _requests.GetOrAdd(endpoint, new List<DateTime>());
+            var now = DateTime.UtcNow;
+
+            newRequest.RemoveAll(x => (now -x).TotalMilliseconds >= 60000);
+
+            if (newRequest.Count >= MAX_REQUEST_PER_SECOND) 
+                return true;
+
+            newRequest.Add(now);
+            return false;
+        }
+
     }
 }
