@@ -1,0 +1,26 @@
+2025-10-10T15:00:01.8405921+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Version: 1.7.3+5abdae1f2e07071c4e81b27ac262f241708ec3cf
+2025-10-10T15:00:01.8592414+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging mode: asynchronous
+2025-10-10T15:00:01.8609477+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Logging level: Information
+2025-10-10T15:00:01.8609618+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION CreateBuilderAsync entry time: 15:00:01.761
+2025-10-10T15:00:01.8861335+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION PID: 12960
+2025-10-10T15:00:01.8863068+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime information: win-x64 - .NET 8.0.20
+2025-10-10T15:00:01.8863318+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Runtime location: C:\Program Files\dotnet\shared\Microsoft.NETCore.App\8.0.20\System.Private.CoreLib.dll
+2025-10-10T15:00:01.8863531+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION IsDynamicCodeSupported: True
+2025-10-10T15:00:01.8864374+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Test module: C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Ranking.UnitTests.dll
+2025-10-10T15:00:01.8866507+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION Command line arguments: '--server --diagnostic --diagnostic-verbosity Information --diagnostic-output-directory C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Log --results-directory C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\TestResults --client-port 53942'
+2025-10-10T15:00:01.8889948+00:00 Microsoft.Testing.Platform.Builder.TestApplication INFORMATION TESTINGPLATFORM_DEFAULT_HANG_TIMEOUT: ''
+2025-10-10T15:00:01.9138549+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting RegisterEnvironmentVariablesConfigurationSource: 'True'
+2025-10-10T15:00:01.9395463+00:00 Microsoft.Testing.Platform.Hosts.TestHostBuilder INFORMATION Setting PlatformExitProcessOnUnhandledException: 'False', config file: False environment variable: 
+2025-10-10T15:00:02.3687572+00:00 Microsoft.Testing.Platform.Requests.TestHostTestFrameworkInvoker INFORMATION Test framework UID: '30ea7c6e-dd24-4152-a360-1387158cd41d' Version: '3.0.0' DisplayName: 'xUnit.net v3 Microsoft.Testing.Platform test framework' Description: 'xUnit.net v3 Microsoft.Testing.Platform test framework'
+2025-10-10T15:00:02.3742168+00:00 xUnit.net INFORMATION xUnit.net v3 In-Process Runner v3.0.0+d0213fc4e5 (64-bit .NET 8.0.20)
+2025-10-10T15:00:02.4553072+00:00 xUnit.net INFORMATION   Discovering: Ranking.UnitTests
+2025-10-10T15:00:02.5018820+00:00 xUnit.net INFORMATION   Discovered:  Ranking.UnitTests
+2025-10-10T15:00:02.5294602+00:00 xUnit.net INFORMATION   Starting:    Ranking.UnitTests
+2025-10-10T15:00:02.8953924+00:00 xUnit.net ERROR     Ranking.UnitTests.Application.Commands.Customers.CreateCustomerCommandHandlerTests.Handle_ShouldAddCustomerAndReturnId [FAIL]
+2025-10-10T15:00:02.8963363+00:00 xUnit.net INFORMATION       System.InvalidCastException : Unable to cast object of type 'System.Threading.Tasks.Task`1[System.Threading.Tasks.VoidTaskResult]' to type 'System.Threading.Tasks.Task`1[Ranking.Web.API.Domain.Entities.Customer]'.
+2025-10-10T15:00:02.8972041+00:00 xUnit.net INFORMATION       Stack Trace:
+2025-10-10T15:00:02.8983062+00:00 xUnit.net INFORMATION         C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\Application\Commands\Customers\CreateCustomerCommandHandlerTests.cs(29,0): at Ranking.UnitTests.Application.Commands.Customers.CreateCustomerCommandHandlerTests.Handle_ShouldAddCustomerAndReturnId()
+2025-10-10T15:00:02.8983272+00:00 xUnit.net INFORMATION         --- End of stack trace from previous location ---
+2025-10-10T15:00:02.9085034+00:00 xUnit.net INFORMATION   Finished:    Ranking.UnitTests
+2025-10-10T15:00:02.9157521+00:00 xUnit.net INFORMATION === TEST EXECUTION SUMMARY ===
+2025-10-10T15:00:02.9215388+00:00 xUnit.net INFORMATION    Ranking.UnitTests  Total: 1, Errors: 0, Failed: 1, Skipped: 0, Not Run: 0, Time: 0.385s

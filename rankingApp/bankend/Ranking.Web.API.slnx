@@ -1,4 +1,8 @@
 <Solution>
-  <Project Path="src/Ranking.Web.API/Ranking.Web.API.csproj" />
-  <Project Path="tests/Ranking.UnitTests/Ranking.UnitTests.csproj" />
+  <Folder Name="/Apis/">
+    <Project Path="src/Ranking.Web.API/Ranking.Web.API.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="tests/Ranking.UnitTests/Ranking.UnitTests.csproj" />
+  </Folder>
 </Solution>
