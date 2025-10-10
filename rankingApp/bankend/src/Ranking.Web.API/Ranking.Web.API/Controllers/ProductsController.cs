@@ -6,11 +6,11 @@ namespace Ranking.Web.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private readonly ProductService _service;
 
-        public ProductController(ProductService service)
+        public ProductsController(ProductService service)
         {
             _service = service;
         }

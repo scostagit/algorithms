@@ -2,7 +2,7 @@
 using Ranking.Web.API.Domain.Entities;
 using Ranking.Web.API.Domain.Interfaces;
 
-namespace Ranking.Web.API.Application.Commands.Customers.Create
+namespace Ranking.Web.API.Application.Commands.Customers
 {
     public sealed class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Guid>
     {

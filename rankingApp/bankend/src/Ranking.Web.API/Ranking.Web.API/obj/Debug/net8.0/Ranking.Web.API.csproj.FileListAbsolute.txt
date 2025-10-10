@@ -50,3 +50,8 @@ C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ra
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.pdb
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.genruntimeconfig.cache
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\obj\Debug\net8.0\ref\Ranking.Web.API.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\bin\Debug\net8.0\NServiceBus.Core.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\bin\Debug\net8.0\NServiceBus.FluentValidation.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\bin\Debug\net8.0\NServiceBus.MessageInterfaces.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\Ranking.Web.API\bin\Debug\net8.0\System.Security.Cryptography.Xml.dll

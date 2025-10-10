@@ -2,10 +2,10 @@
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Ranking.Web.API.Application.Commands.Customers.Create;
+using Ranking.Web.API.Application.Commands.Customers;
 using System.Text;
 
-namespace Ranking.Web.API.Infrastructure
+namespace Ranking.Web.API.Infrastructure.MessageBus
 {
     public class CustomerCreatedConsumer : BackgroundService
     {

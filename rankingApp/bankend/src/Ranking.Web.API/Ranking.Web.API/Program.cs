@@ -1,13 +1,13 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Ranking.Web.API.Application.Commands.Customers.Create;
+using Ranking.Web.API.Application.Commands.Customers;
 using Ranking.Web.API.Application.Services;
 using Ranking.Web.API.Domain.Entities;
 using Ranking.Web.API.Domain.Interfaces;
-using Ranking.Web.API.Infrastructure;
 using Ranking.Web.API.Infrastructure.Data;
 using Ranking.Web.API.Infrastructure.Data.Repositories;
+using Ranking.Web.API.Infrastructure.MessageBus;
 
 var builder = WebApplication.CreateBuilder(args);
 // Register DbContext with InMemory DB
@@ -30,7 +30,8 @@ builder.Services.AddMediatR(cfg =>
 
 
 // Dependency Injection
-builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
+
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddSingleton<IMessageBus, RabbitMQMessageBus>();
 builder.Services.AddHostedService<CustomerCreatedConsumer>();
 

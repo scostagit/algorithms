@@ -4,7 +4,7 @@ using RabbitMQ.Client;
 using Ranking.Web.API.Domain.Interfaces;
 using System.Text;
 
-namespace Ranking.Web.API.Infrastructure
+namespace Ranking.Web.API.Infrastructure.MessageBus
 {
     public class RabbitMQMessageBus : IMessageBus
     {
