@@ -16,10 +16,10 @@ namespace Ranking.Web.API.Application.Queries.Customers
         public async Task<Customer> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
         {
             var customer = await _repository.GetByIdAsync(request.Id);
-            if (customer == null)
-            {
-                throw new KeyNotFoundException($"Customer with ID {request.Id} not found.");
-            }
+            //if (customer == null)
+            //{
+            //    throw new KeyNotFoundException($"Customer with ID {request.Id} not found.");
+            //}
 
             return customer;
         }

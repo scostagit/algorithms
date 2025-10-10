@@ -1,10 +1,13 @@
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Ranking.Web.API.Application.Commands.Customers;
+using Ranking.Web.API.Application.Queries.Customers;
 using Ranking.Web.API.Application.Services;
 using Ranking.Web.API.Domain.Entities;
 using Ranking.Web.API.Domain.Interfaces;
+using Ranking.Web.API.Extensions;
 using Ranking.Web.API.Infrastructure.Data;
 using Ranking.Web.API.Infrastructure.Data.Repositories;
 using Ranking.Web.API.Infrastructure.MessageBus;
@@ -35,6 +38,28 @@ builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddSingleton<IMessageBus, RabbitMQMessageBus>();
 builder.Services.AddHostedService<CustomerCreatedConsumer>();
 
+//validators
+builder.Services.AddFluentValidationAutoValidation();
+
+// for use the Validator on query methods
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+//builder.Services.AddValidatorsFromAssemblyContaining<CreateCustomerValidator>();
+//builder.Services.AddValidatorsFromAssemblyContaining<GetCustomerByIdQueryValidator>();
+
+var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+    .Where(a => a.FullName.StartsWith("Ranking."))
+    .ToList();
+
+foreach (var assembly in assemblies)
+{
+    builder.Services.AddValidatorsFromAssembly(assembly);
+}
+
+
+
+
+
 var app = builder.Build();
 
 // Seed database on startup
@@ -56,7 +81,7 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-   // app.MapOpenApi();
+    // app.MapOpenApi();
 }
 
 app.UseAuthorization();

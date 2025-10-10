@@ -2,7 +2,7 @@
 
 namespace Ranking.Web.API.Application.Queries.Customers
 {
-    public class GetCustomerByIdQueryValidator : AbstractValidator<GetCustomerByIdQuery>
+    public sealed class GetCustomerByIdQueryValidator : AbstractValidator<GetCustomerByIdQuery>
     {
         public GetCustomerByIdQueryValidator()
         {
@@ -11,3 +11,4 @@ namespace Ranking.Web.API.Application.Queries.Customers
         }
     }
 }
+

@@ -64,6 +64,8 @@ C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bi
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Ranking.Web.API.dll
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Ranking.Web.API.pdb
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\MediatR.dll
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\MediatR.Contracts.dll
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
@@ -94,6 +96,7 @@ C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\ob
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.AssemblyInfoInputs.cache
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.AssemblyInfo.cs
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.csproj.CoreCompileInputs.cache
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.sourcelink.json
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\rjimswa.dswa.cache.json

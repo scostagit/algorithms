@@ -34,6 +34,10 @@ namespace Ranking.Web.API.Controllers
         public async Task<IActionResult> GetById(Guid id)
         {
             var customer = await _mediator.Send(new GetCustomerByIdQuery(id));
+
+            if (customer == null)
+                return NotFound(new { message = $"Customer with ID `{id}` not found." });
+
             return Ok(customer);
         }
     }
