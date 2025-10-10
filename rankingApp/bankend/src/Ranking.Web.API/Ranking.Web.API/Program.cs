@@ -1,7 +1,11 @@
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Ranking.Web.API.Application.Commands.Customers.Create;
 using Ranking.Web.API.Application.Services;
-using Ranking.Web.API.Domain.Entities.Domain.Entities;
+using Ranking.Web.API.Domain.Entities;
 using Ranking.Web.API.Domain.Interfaces;
+using Ranking.Web.API.Infrastructure;
 using Ranking.Web.API.Infrastructure.Data;
 using Ranking.Web.API.Infrastructure.Data.Repositories;
 
@@ -17,7 +21,18 @@ builder.Services.AddScoped<ProductService>();
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+//builder.Services.AddOpenApi();
+
+
+// MediatR
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssemblyContaining<CreateCustomerCommandHandler>());
+
+
+// Dependency Injection
+builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
+builder.Services.AddSingleton<IMessageBus, RabbitMQMessageBus>();
+builder.Services.AddHostedService<CustomerCreatedConsumer>();
 
 var app = builder.Build();
 
@@ -40,7 +55,7 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+   // app.MapOpenApi();
 }
 
 app.UseAuthorization();

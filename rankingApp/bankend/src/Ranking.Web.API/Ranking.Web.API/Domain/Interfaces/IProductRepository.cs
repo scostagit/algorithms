@@ -1,4 +1,4 @@
-﻿using Ranking.Web.API.Domain.Entities.Domain.Entities;
+﻿using Ranking.Web.API.Domain.Entities;
 
 namespace Ranking.Web.API.Domain.Interfaces
 {

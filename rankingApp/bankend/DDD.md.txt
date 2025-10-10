@@ -1,0 +1,386 @@
+You're asking to implement a **Customer entity** using **DDD (Domain-Driven Design)** and **CQRS (Command Query Responsibility Segregation)** patterns within a **.NET Core Web API** project. You also want:
+
+* **Clean Architecture** principles applied.
+* Integration with **RabbitMQ** using an **event-driven architecture**.
+* A **message producer** when a new customer is created.
+* A **message consumer** that listens to the queue and registers a new customer.
+
+---
+
+### ✅ Technologies Used
+
+* .NET Core Web API
+* MediatR (for CQRS/Commands)
+* RabbitMQ.Client (for messaging)
+* Newtonsoft.Json (for message serialization)
+* Clean Architecture structure (Domain, Application, Infrastructure, API)
+
+---
+
+## 📁 Project Structure (Within One Project)
+
+Here’s the folder structure you'd have inside your existing Web API project:
+
+```
+/YourWebApiProject
+│
+├── Controllers
+│   └── CustomersController.cs
+│
+├── Domain
+│   └── Entities
+│       └── Customer.cs
+│   └── Events
+│       └── CustomerCreatedEvent.cs
+│
+├── Application
+│   └── Interfaces
+│       └── ICustomerRepository.cs
+│       └── IMessageBus.cs
+│   └── Commands
+│       └── CreateCustomer
+│           ├── CreateCustomerCommand.cs
+│           ├── CreateCustomerCommandHandler.cs
+│           └── CreateCustomerValidator.cs (Optional, with FluentValidation)
+│
+├── Infrastructure
+│   └── Persistence
+│       └── Repositories
+│           └── CustomerRepository.cs
+│   └── Messaging
+│       └── RabbitMQMessageBus.cs
+│       └── CustomerCreatedConsumer.cs
+│
+├── Program.cs / Startup.cs (register services)
+```
+
+---
+
+## 1. 🧱 Domain Layer
+
+### **Customer.cs**
+
+```csharp
+namespace YourWebApiProject.Domain.Entities
+{
+    public class Customer
+    {
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
+
+        private Customer() { }
+
+        public Customer(string name, string email)
+        {
+            Id = Guid.NewGuid();
+            Name = name;
+            Email = email;
+        }
+    }
+}
+```
+
+---
+
+## 2. 📜 Application Layer
+
+### **ICustomerRepository.cs**
+
+```csharp
+namespace YourWebApiProject.Application.Interfaces
+{
+    public interface ICustomerRepository
+    {
+        Task AddAsync(Customer customer);
+        Task<Customer> GetByIdAsync(Guid id);
+    }
+}
+```
+
+### **IMessageBus.cs**
+
+```csharp
+namespace YourWebApiProject.Application.Interfaces
+{
+    public interface IMessageBus
+    {
+        void Publish<T>(T message, string queue);
+    }
+}
+```
+
+---
+
+### **CreateCustomerCommand.cs**
+
+```csharp
+using MediatR;
+
+namespace YourWebApiProject.Application.Commands.CreateCustomer
+{
+    public class CreateCustomerCommand : IRequest<Guid>
+    {
+        public string Name { get; set; }
+        public string Email { get; set; }
+    }
+}
+```
+
+---
+
+### **CreateCustomerCommandHandler.cs**
+
+```csharp
+using MediatR;
+using YourWebApiProject.Domain.Entities;
+using YourWebApiProject.Application.Interfaces;
+using Newtonsoft.Json;
+
+namespace YourWebApiProject.Application.Commands.CreateCustomer
+{
+    public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Guid>
+    {
+        private readonly ICustomerRepository _repository;
+        private readonly IMessageBus _messageBus;
+
+        public CreateCustomerCommandHandler(ICustomerRepository repository, IMessageBus messageBus)
+        {
+            _repository = repository;
+            _messageBus = messageBus;
+        }
+
+        public async Task<Guid> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
+        {
+            var customer = new Customer(request.Name, request.Email);
+            await _repository.AddAsync(customer);
+
+            // Send message to RabbitMQ
+            _messageBus.Publish(customer, "customer_created");
+
+            return customer.Id;
+        }
+    }
+}
+```
+
+---
+
+## 3. 🏗️ Infrastructure Layer
+
+### **CustomerRepository.cs**
+
+```csharp
+using YourWebApiProject.Application.Interfaces;
+using YourWebApiProject.Domain.Entities;
+
+namespace YourWebApiProject.Infrastructure.Persistence.Repositories
+{
+    public class CustomerRepository : ICustomerRepository
+    {
+        // In-memory for simplicity
+        private static readonly List<Customer> _customers = new();
+
+        public Task AddAsync(Customer customer)
+        {
+            _customers.Add(customer);
+            return Task.CompletedTask;
+        }
+
+        public Task<Customer> GetByIdAsync(Guid id)
+        {
+            return Task.FromResult(_customers.FirstOrDefault(c => c.Id == id));
+        }
+    }
+}
+```
+
+---
+
+### **RabbitMQMessageBus.cs**
+
+```csharp
+using Newtonsoft.Json;
+using RabbitMQ.Client;
+using System.Text;
+using YourWebApiProject.Application.Interfaces;
+
+namespace YourWebApiProject.Infrastructure.Messaging
+{
+    public class RabbitMQMessageBus : IMessageBus
+    {
+        public void Publish<T>(T message, string queue)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using var connection = factory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            channel.QueueDeclare(queue, durable: false, exclusive: false, autoDelete: false, arguments: null);
+
+            var json = JsonConvert.SerializeObject(message);
+            var body = Encoding.UTF8.GetBytes(json);
+
+            channel.BasicPublish("", queue, null, body);
+        }
+    }
+}
+```
+
+---
+
+### **CustomerCreatedConsumer.cs**
+
+```csharp
+using Newtonsoft.Json;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System.Text;
+using MediatR;
+using YourWebApiProject.Application.Commands.CreateCustomer;
+
+namespace YourWebApiProject.Infrastructure.Messaging
+{
+    public class CustomerCreatedConsumer : BackgroundService
+    {
+        private readonly IServiceScopeFactory _scopeFactory;
+
+        public CustomerCreatedConsumer(IServiceScopeFactory scopeFactory)
+        {
+            _scopeFactory = scopeFactory;
+        }
+
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var connection = factory.CreateConnection();
+            var channel = connection.CreateModel();
+
+            channel.QueueDeclare("customer_created", false, false, false, null);
+
+            var consumer = new EventingBasicConsumer(channel);
+            consumer.Received += async (model, ea) =>
+            {
+                using var scope = _scopeFactory.CreateScope();
+                var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
+
+                var body = ea.Body.ToArray();
+                var json = Encoding.UTF8.GetString(body);
+
+                var customerDto = JsonConvert.DeserializeObject<CreateCustomerCommand>(json);
+
+                await mediator.Send(customerDto);
+            };
+
+            channel.BasicConsume(queue: "customer_created", autoAck: true, consumer: consumer);
+
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+---
+
+## 4. 🎮 API Layer
+
+### **CustomersController.cs**
+
+```csharp
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using YourWebApiProject.Application.Commands.CreateCustomer;
+
+namespace YourWebApiProject.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class CustomersController : ControllerBase
+    {
+        private readonly IMediator _mediator;
+
+        public CustomersController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateCustomerCommand command)
+        {
+            var customerId = await _mediator.Send(command);
+            return Ok(new { Id = customerId });
+        }
+    }
+}
+```
+
+---
+
+## 5. 🧩 Register Services (Program.cs)
+
+```csharp
+using MediatR;
+using YourWebApiProject.Application.Interfaces;
+using YourWebApiProject.Infrastructure.Messaging;
+using YourWebApiProject.Infrastructure.Persistence.Repositories;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// MediatR
+builder.Services.AddMediatR(typeof(Program));
+
+// Dependency Injection
+builder.Services.AddSingleton<ICustomerRepository, CustomerRepository>();
+builder.Services.AddSingleton<IMessageBus, RabbitMQMessageBus>();
+builder.Services.AddHostedService<CustomerCreatedConsumer>();
+
+var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
+```
+
+---
+
+## 🧪 Test Your Setup
+
+1. Run RabbitMQ server (Docker or local install)
+2. Start the Web API
+3. Send a POST to `/api/customers` with JSON:
+
+```json
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+```
+
+4. The controller will:
+
+   * Register the customer
+   * Send a message to the RabbitMQ queue
+5. The consumer will:
+
+   * Read the message
+   * Call the handler again to re-register (for demo purposes)
+
+---
+
+## ✅ Notes
+
+* In real-world scenarios, you should **differentiate commands/events** from the Web layer and the consumer to avoid duplication (e.g., different handlers for command and event).
+* For persistence, consider using EF Core instead of in-memory.
+* RabbitMQ setup in Docker (optional):
+
+```bash
+docker run -d --hostname rabbit --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+```
+
+

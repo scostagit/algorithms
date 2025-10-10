@@ -1,4 +1,4 @@
-﻿using Ranking.Web.API.Domain.Entities.Domain.Entities;
+﻿using Ranking.Web.API.Domain.Entities;
 using Ranking.Web.API.Domain.Interfaces;
 
 namespace Ranking.Web.API.Application.Services

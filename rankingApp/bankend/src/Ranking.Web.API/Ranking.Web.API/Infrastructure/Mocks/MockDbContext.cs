@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Ranking.Web.API.Domain.Entities.Domain.Entities;
+using Ranking.Web.API.Domain.Entities;
 using Ranking.Web.API.Infrastructure.Data;
 
 namespace Ranking.Web.API.Infrastructure.Mocks
@@ -18,7 +18,7 @@ namespace Ranking.Web.API.Infrastructure.Mocks
             dbContext.Products.AddRange(new List<Product>
             {
                 new Product { Name = "Product A", Price = 100 },
-                new Product { Name = "Product B", Price = 200 },
+                new Product { Name = "Product B", Price = 200 }
             });
 
             dbContext.SaveChanges();
