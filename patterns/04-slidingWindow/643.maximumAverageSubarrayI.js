@@ -55,6 +55,7 @@ var findMaxAverage = function(nums, k) {
     return maxSum / k;
 };
   
+console.log("643. Maximum Average Subarray I\n");
 
 console.log("Input: \narr:",[1,12,-5,-6,50,3] ,", \nk =4 \nOutput:", findMaxAverage([1,12,-5,-6,50,3], 4), "\nExpected: ", 12.75);
 console.log("Input: \narr:", [5] ,", \nk =1 \nOutput:", findMaxAverage( [5], 1), "\nExpected: ", 5);

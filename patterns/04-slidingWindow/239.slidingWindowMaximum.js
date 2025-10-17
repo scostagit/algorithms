@@ -55,6 +55,6 @@ var maxSlidingWindow = function(nums, k) {
     
 };
 
-
+console.log("239. Sliding Window Maximum\n");
 console.log("Input: \narr:", [1,3,-1,-3,5,3,6,7] , ", \nk =3 \nOutput:", maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3), "\nExpected: ", 7);
 console.log("Input: \narr:", [1] , ", \nk =1 \nOutput:", maxSlidingWindow([1], 1), "\nExpected: ", 1);
