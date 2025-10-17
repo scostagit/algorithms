@@ -32,35 +32,44 @@ Constraints:
  * @return {number}
  */
 var largestRectangleArea = function(heights) {
+    // Add a 0 at the end to flush out remaining bars in stack at the end
+    heights.push(0); 
 
-    let maxLargestRectangleArea = 0;
-    let stack = [];
-    
-    for(let i = 0; i < heights.length; i++){
+    // Stack to keep indices of the bars
+    const stack = [];
 
+    // To store the maximum area found so far
+    let maxArea = 0;
 
-        while(stack.length > 0 && heights[i] < heights[stack[stack.length -1]]){
+    // Go through each bar in the histogram
+    for (let i = 0; i < heights.length; i++) {
+        // While the current bar is smaller than the bar at the top of the stack
+        // (meaning we can't extend the previous bar anymore)
+        while (stack.length > 0 && heights[i] < heights[stack[stack.length - 1]]) {
+            // Pop the index of the last bar
+            const topIndex = stack.pop();
 
-            let topIndex = stack.pop();
+            // Get the height of the popped bar
+            const height = heights[topIndex];
 
-            let height = heights[topIndex];
-
+            // If the stack is empty, it means the popped bar was the smallest so far,
+            // so its width spans from index 0 to current index i
             const width = stack.length === 0 ? i : i - stack[stack.length - 1] - 1;
 
-             const area = height * width;
-
-            maxLargestRectangleArea = Math.max(maxLargestRectangleArea, area);
+            // Calculate the area and update maxArea if it's larger
+            const area = height * width;
+            maxArea = Math.max(maxArea, area);
         }
 
+        // Push current bar's index onto the stack
         stack.push(i);
-
     }
 
+    // Remove the extra 0 added to the heights array (cleanup)
+    heights.pop();
 
-
-
-    return maxLargestRectangleArea;
-    
+    // Return the maximum area found
+    return maxArea;
 };
 
 
