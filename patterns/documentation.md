@@ -158,8 +158,8 @@ To find:
 
 There is another pattern similar  to this one called QuickSelect, take a look it later
 
-
-
+ 
+  
 ### Exercises
 
  215. Kth Largest Elment in an Aray
