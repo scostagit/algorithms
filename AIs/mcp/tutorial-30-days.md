@@ -66,6 +66,12 @@ Vou propor 4 semanas (≈ 30 dias), com **3 blocos por semana** (por exemplo: le
 
 * Refletir: anote 3-5 casos no seu trabalho atual onde um agente poderia ajudar (pode ser automação de código, revisão, testes, etc).
 
+[agents-in-sdlc](https://github.com/github-samples/agents-in-sdlc/blob/main/docs/0-prereqs.md)
+
+
+[OctoHOL](https://github.com/octohol)
+
+
 **Dia 2**
 
 * Leitura: artigo sobre MCP (“Introducing Model Context Protocol (MCP)…”). ([Microsoft][3])
