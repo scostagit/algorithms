@@ -307,3 +307,8 @@ C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTest
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\obj\Debug\net8.0\Ranking.UnitTests.pdb
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\obj\Debug\net8.0\Ranking.UnitTests.genruntimeconfig.cache
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\obj\Debug\net8.0\ref\Ranking.UnitTests.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Refit.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\tests\Ranking.UnitTests\bin\Debug\net8.0\Refit.HttpClientFactory.dll

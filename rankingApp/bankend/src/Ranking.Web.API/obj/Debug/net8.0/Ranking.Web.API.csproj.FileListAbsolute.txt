@@ -115,3 +115,15 @@ C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\ob
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.pdb
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\Ranking.Web.API.genruntimeconfig.cache
 C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\obj\Debug\net8.0\ref\Ranking.Web.API.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Refit.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Refit.HttpClientFactory.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Http.Polly.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Polly.dll
+C:\Users\sergio.costa\repos\algorithms\rankingApp\bankend\src\Ranking.Web.API\bin\Debug\net8.0\Polly.Extensions.Http.dll

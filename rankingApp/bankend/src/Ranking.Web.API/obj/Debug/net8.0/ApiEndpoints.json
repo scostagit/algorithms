@@ -1,5 +1,23 @@
 [
   {
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_0",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Ranking.Web.API.Controllers.CustomersController",
     "Method": "Create",
     "RelativePath": "api/Customers",
@@ -36,6 +54,69 @@
       {
         "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Ranking.Web.API.Controllers.HelloController",
+    "Method": "GetAll",
+    "RelativePath": "api/Hello",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Ranking.Web.API.Controllers.HelloController",
+    "Method": "Create",
+    "RelativePath": "api/Hello",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "data",
+        "Type": "System.Object",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Ranking.Web.API.Controllers.HelloController",
+    "Method": "GetByName",
+    "RelativePath": "api/Hello/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Ranking.Web.API.Controllers.HelloController",
+    "Method": "Update",
+    "RelativePath": "api/Hello/{name}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "data",
+        "Type": "System.Object",
         "IsRequired": true
       }
     ],
@@ -123,7 +204,7 @@
   {
     "ContainingType": "Ranking.Web.API.Controllers.WeatherForecastController",
     "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "RelativePath": "api/WeatherForecast",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

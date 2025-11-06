@@ -14,6 +14,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)refit\8.0.0\buildTransitive\netstandard2.0\refit.props" Condition="Exists('$(NuGetPackageRoot)refit\8.0.0\buildTransitive\netstandard2.0\refit.props')" />
     <Import Project="$(NuGetPackageRoot)nservicebus\9.2.2\buildTransitive\net8.0\NServiceBus.props" Condition="Exists('$(NuGetPackageRoot)nservicebus\9.2.2\buildTransitive\net8.0\NServiceBus.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.visualstudio.azure.containers.tools.targets\1.23.0\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('$(NuGetPackageRoot)microsoft.visualstudio.azure.containers.tools.targets\1.23.0\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.9\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\9.0.9\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props')" />

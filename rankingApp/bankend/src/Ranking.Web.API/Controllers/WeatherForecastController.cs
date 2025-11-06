@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Collections.Concurrent;
 
 namespace Ranking.Web.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries =
@@ -29,6 +28,7 @@ namespace Ranking.Web.API.Controllers
 
             return Ok(result);
         }
+       
     }
 
 
