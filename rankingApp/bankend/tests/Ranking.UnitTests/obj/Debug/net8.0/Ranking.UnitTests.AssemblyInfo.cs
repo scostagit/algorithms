@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ranking.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b56c99b580adc9138293b5499ad7d3ab2614e29")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+820c4c36fe3e5bc58622cba5b092ddaf13641548")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ranking.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ranking.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

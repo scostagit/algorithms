@@ -9,6 +9,8 @@ namespace Ranking.Web.API.Infrastructure.Data
 
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<Sale> Sales { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     }
 }
