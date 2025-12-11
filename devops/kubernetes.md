@@ -882,3 +882,6 @@ NodePort:       Acesso externo via nó
 LoadBalancer:   Acesso externo via IP público da cloud
 ```
 
+in this video, there is a link for a certification course:
+
+[take a look at the end.](https://www.google.com/search?sca_esv=b338e4d9bf6df8e5&rlz=1C1GCEA_enIE1179IE1179&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOhYPURIv2wPgv_w_sE_0Sc6QqqU7k8cSQndc5mTXCIWHa5VI1yMxIvn_0W11438Uhn0KUB0OyyqdxtMTNJnktIk9lQeAou6u0TG1ZnPmcPkpqk3LcE4bSX7s88nmTrtoPEA9SVU_&q=kubernetes+overview&sa=X&ved=2ahUKEwiS0Kag77WRAxX6T0EAHVLwPNAQtKgLegQIFBAB&biw=1280&bih=613&dpr=1#fpstate=ive&vld=cid:f2557177,vid:r2zuL9MW6wc,st:0)
