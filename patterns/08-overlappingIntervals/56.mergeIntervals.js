@@ -94,3 +94,51 @@ console.log("Test Case 03  --");
 console.log("---------------------------------------------------------------------------------");
 console.log("Input: (",[[4,7],[1,4]],")\nOutput:", merge([[4,7],[1,4]]),"\nExpected: ",[[1,7]]);
 console.log("---------------------------------------------------------------------------------");
+
+
+/*
+Example 1:
+
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+[[1,3],[2,6],[8,10],[15,18]]
+
+//sorting array
+result = [[1,6],[8,10],[15,18]]
+
+begin loop
+    i = 1
+
+    previousInterval ([1,3]) = result[result.length -1];
+    start (2), end(6) = intervals[i]
+
+    if(start(2) < previousInterval)
+        previousInterval[1] = max(3,6)
+    else
+        result.push(start,end)
+
+    i = 2
+
+    previousInterval ([1,6]) = result[result.length -1];
+    start (8), end(10) = intervals[i]
+
+    if(start(8) < previousInterval)
+        skip
+    else
+        result.push(start,end)
+
+    i = 3
+
+    previousInterval ([8,10]) = result[result.length -1];
+    start (15), end(18) = intervals[i]
+
+    if(start(15) < previousInterval)
+        skip
+    else
+        result.push(start,end)
+
+end loop
+return result
+*/

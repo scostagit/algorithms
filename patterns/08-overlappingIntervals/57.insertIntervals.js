@@ -88,3 +88,33 @@ console.log("Test Case 02  --");
 console.log("---------------------------------------------------------------------------------");
 console.log("Input: (intervals:",[[1,2],[3,5],[6,7],[8,10],[12,16]],", newInterval: ", [4,8],")\nOutput:", insert([[1,2],[3,5],[6,7],[8,10],[12,16]], [4,8]),"\nExpected: ",[[1,2],[3,10],[12,16]]);
 console.log("---------------------------------------------------------------------------------");
+
+
+/*
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+
+begin loop
+i = 0
+is 1 > 5 no
+is 3 < 2 no
+else
+    newInterval = [min(1,2), max(3,5)]
+
+newInterval = [1,5];
+result = []
+
+i = 1
+is 6 > 5 yes
+    result.push(newInterval)
+    newInterval = interval
+
+result = [1,5];
+newInterval = [6,9]
+
+end loop
+
+result.push(newInterval);
+
+return result
+*/

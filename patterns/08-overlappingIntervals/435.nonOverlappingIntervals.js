@@ -38,14 +38,14 @@ intervals[i].length == 2
  * @return {number}
  */
 var eraseOverlapIntervals = function(intervals) {
-    if (intervals.length === 0) return 0;
+    if (intervals.length === 0) return 0; // O(n log n)
 
     intervals.sort((a, b) => a[1] - b[1]);
 
     let count = 0;
     let prevEnd = intervals[0][1];
 
-    for (let i = 1; i < intervals.length; i++) {
+    for (let i = 1; i < intervals.length; i++) { //O(n)
         // overlap
         if (intervals[i][0] < prevEnd) {
             count++;
@@ -82,3 +82,20 @@ console.log("Test Case 03  --");
 console.log("---------------------------------------------------------------------------------");
 console.log("Input: (",[[1,2],[2,3]],")\nOutput:", eraseOverlapIntervals([[1,2],[2,3]]),"\nExpected: ",0);
 console.log("---------------------------------------------------------------------------------");
+
+
+/*
+Time Complexity
+O(n log n) + O(n) = O(n log n)
+
+
+Space complexity 
+
+Sorting is in-place, but JavaScript’s sort may use auxiliary space.
+
+Timsort uses O(log n) to O(n) extra space (engine-dependent).
+
+So:
+
+Space complexity: O(1) to O(n) (implementation-dependent)
+ */

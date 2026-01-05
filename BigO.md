@@ -130,4 +130,263 @@ Looping through a list to find the biggest number.
 
 ---
 
-Want to see a visual or code to help make this clearer?
+
+
+# Big O (Portuguese)
+
+## 1️⃣ O que é Big O
+
+**Big O** responde basicamente a duas perguntas:
+
+1. **Se o input crescer, o algoritmo fica mais lento quanto?** (⏱️ tempo)
+2. **Quanto de memória extra ele usa?** (💾 espaço)
+
+👉 Não mede tempo real (segundos),
+👉 Mede **como o custo cresce** conforme o tamanho da entrada (**n**).
+
+---
+
+## 2️⃣ O que é esse “n”?
+
+`n` normalmente é:
+
+* Quantidade de elementos em um array
+* Quantidade de itens de entrada
+* Número de linhas, intervalos, usuários, etc.
+
+Exemplo:
+
+```js
+intervals.length === n
+```
+
+---
+
+## 3️⃣ Exemplo do mundo real 
+
+### 📦 Procurar um objeto numa caixa
+
+#### Caso 1: Caixa organizada
+
+Você olha só o primeiro objeto.
+
+➡️ **1 passo sempre**
+
+```
+O(1) → tempo constante
+```
+
+---
+
+#### Caso 2: Caixa bagunçada
+
+Você precisa olhar item por item até achar.
+
+➡️ Se a caixa tem `n` objetos, você pode olhar até `n`.
+
+```
+O(n) → tempo linear
+```
+
+---
+
+#### Caso 3: Caixa MUITO grande e organizada
+
+Você divide a caixa no meio, depois no meio de novo…
+
+➡️ Cada passo corta metade.
+
+```
+O(log n) → muito rápido
+```
+
+---
+
+## 4️⃣ Big O mais comuns (do mais rápido ao mais lento)
+
+| Big O      | Intuição                   |
+| ---------- | -------------------------- |
+| O(1)       | Sempre igual               |
+| O(log n)   | Cresce bem devagar         |
+| O(n)       | Cresce proporcional        |
+| O(n log n) | Cresce mais, mas aceitável |
+| O(n²)      | Cresce rápido (perigoso)   |
+
+---
+
+## 5️⃣ Agora com código (parte prática)
+
+---
+
+### 🟢 O(1) — constante
+
+```js
+function pegaPrimeiro(arr) {
+  return arr[0];
+}
+```
+
+* Não importa se o array tem 1 ou 1 milhão
+* Sempre **1 operação**
+
+✅ **O(1)**
+
+---
+
+### 🟡 O(n) — linear
+
+```js
+function soma(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+```
+
+* Se o array dobra de tamanho
+* O tempo dobra
+
+✅ **O(n)**
+
+---
+
+### 🔴 O(n²) — quadrático (atenção!)
+
+```js
+function pares(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      console.log(arr[i], arr[j]);
+    }
+  }
+}
+```
+
+* Para cada item, você percorre **todos os outros**
+* 10 → 100 passos
+* 100 → 10.000 passos
+
+❌ **O(n²)** (evite quando possível)
+
+---
+
+## 6️⃣ E o `sort()`? (muito importante)
+
+```js
+arr.sort((a, b) => a - b);
+```
+
+➡️ Qualquer **sort por comparação** custa:
+
+```
+O(n log n)
+```
+
+Por isso, quando você vê:
+
+```js
+sort(...)
+for (...)
+```
+
+O custo final é:
+
+```
+O(n log n) + O(n) = O(n log n)
+```
+
+👉 **Sempre vence o maior termo**
+
+---
+
+## 7️⃣ Como calcular Big O (passo a passo)
+
+### ✅ Passo 1 — Ignore números fixos
+
+```js
+for (let i = 0; i < 100; i++) {}
+```
+
+➡️ Ainda é **O(1)** (100 é constante)
+
+---
+
+### ✅ Passo 2 — Conte loops dependentes de `n`
+
+```js
+for (let i = 0; i < n; i++) {}
+```
+
+➡️ **O(n)**
+
+```js
+for (let i = 0; i < n; i++) {
+  for (let j = 0; j < n; j++) {}
+}
+```
+
+➡️ **O(n²)**
+
+---
+
+### ✅ Passo 3 — Some e fique com o maior
+
+```js
+for (let i = 0; i < n; i++) {}      // O(n)
+for (let i = 0; i < n; i++) {}      // O(n)
+```
+
+➡️ **O(2n) → O(n)**
+
+---
+
+## 8️⃣ Complexidade de espaço (memória)
+
+### 🟢 O(1) — sem memória extra
+
+```js
+let sum = 0;
+```
+
+---
+
+### 🟡 O(n) — cria algo proporcional à entrada
+
+```js
+let novoArray = [];
+for (let i = 0; i < n; i++) {
+  novoArray.push(i);
+}
+```
+
+➡️ **O(n)** de espaço
+
+---
+
+## 9️⃣ Aplicando no seu algoritmo
+
+```js
+intervals.sort(...)  // O(n log n)
+
+for (...) {           // O(n)
+}
+```
+
+### Resultado final:
+
+* **Tempo:** ✅ `O(n log n)`
+* **Espaço:** ⚠️ `O(1)` ou `O(n)` (depende do motor JS)
+
+---
+
+## 🔟 Regra de ouro (grave isso)
+
+> 🔑 **Se tem sort → provavelmente O(n log n)**
+
+> 🔑 **Loop dentro de loop → provavelmente O(n²)**
+
+> 🔑 **Um loop simples → O(n)**
+
+
