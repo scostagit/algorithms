@@ -14,3 +14,8 @@ const rotation = (arr, k)=>{
 }
 
 console.log(rotation([1,2,3,4,5], 2));
+
+console.log("input:\narr:['A','B','C','D','F'], \nrotation:1, \noutput:", rotation(['A','B','C','D','F'], 1));
+console.log("input:\narr:['A','B','C','D','F'], \nrotation:2, \noutput:", rotation(['A','B','C','D','F'], 2));
+console.log("input:\narr:['A','B','C','D','F'], \nrotation:3, \noutput:", rotation(['A','B','C','D','F'], 3));
+console.log("input:\narr:['A','B','C','D','F'], \nrotation:4, \noutput:", rotation(['A','B','C','D','F'], 4));
