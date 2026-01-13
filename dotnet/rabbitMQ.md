@@ -1,16 +1,16 @@
-\## 1️⃣ RabbitMQ
+## 1️⃣ RabbitMQ
 
 
 
-Imagine um \*\*Correio\*\* 📦:
+Imagine um **Correio** 📦:
 
 
 
-\* Alguém \*\*envia uma carta\*\* (mensagem)
+* Alguém **envia uma carta** (mensagem)
 
-\* O Correio \*\*organiza\*\*
+* O Correio **organiza**
 
-\* Outra pessoa \*\*recebe a carta\*\*
+* Outra pessoa **recebe a carta**
 
 
 
@@ -18,17 +18,17 @@ No RabbitMQ:
 
 
 
-\* Quem envia = \*\*Producer\*\*
+* Quem envia = **Producer**
 
-\* Quem recebe = \*\*Consumer\*\*
+* Quem recebe = **Consumer**
 
-\* O correio = \*\*RabbitMQ\*\*
+* O correio = **RabbitMQ**
 
-\* A carta = \*\*Mensagem\*\*
+* A carta = **Mensagem**
 
 
 
-Ele serve para \*\*sistemas conversarem entre si sem ficarem acoplados\*\*.
+Ele serve para **sistemas conversarem entre si sem ficarem acoplados**.
 
 
 
@@ -36,11 +36,11 @@ Ele serve para \*\*sistemas conversarem entre si sem ficarem acoplados\*\*.
 
 
 
-\## 2️⃣ O que é AMQP?
+## 2️⃣ O que é AMQP?
 
 
 
-\*\*AMQP (Advanced Message Queuing Protocol)\*\* é o \*\*idioma/regras\*\* que o RabbitMQ usa.
+**AMQP (Advanced Message Queuing Protocol)** é o **idioma/regras** que o RabbitMQ usa.
 
 
 
@@ -48,13 +48,13 @@ Ele serve para \*\*sistemas conversarem entre si sem ficarem acoplados\*\*.
 
 
 
-\* Como a mensagem é enviada
+* Como a mensagem é enviada
 
-\* Para onde ela vai
+* Para onde ela vai
 
-\* Quem pode recebê-la
+* Quem pode recebê-la
 
-\* O formato do caminho
+* O formato do caminho
 
 
 
@@ -62,9 +62,9 @@ Ele serve para \*\*sistemas conversarem entre si sem ficarem acoplados\*\*.
 
 
 
-> AMQP é como as \*\*regras dos Correios\*\*
+> AMQP é como as **regras dos Correios**
 
-> RabbitMQ é a \*\*empresa que segue essas regras\*\*
+> RabbitMQ é a **empresa que segue essas regras**
 
 
 
@@ -72,19 +72,19 @@ Ele serve para \*\*sistemas conversarem entre si sem ficarem acoplados\*\*.
 
 
 
-\## 3️⃣ Conceito de Fila (Queue)
+## 3️⃣ Conceito de Fila (Queue)
 
 
 
-Uma \*\*fila\*\* é literalmente uma fila de espera 🧍🧍🧍
+Uma **fila** é literalmente uma fila de espera 🧍🧍🧍
 
 
 
-\* Mensagens entram no final
+* Mensagens entram no final
 
-\* Saem pela frente
+* Saem pela frente
 
-\* Normalmente \*\*FIFO\*\* (First In, First Out)
+* Normalmente **FIFO** (First In, First Out)
 
 
 
@@ -92,15 +92,15 @@ Uma \*\*fila\*\* é literalmente uma fila de espera 🧍🧍🧍
 
 
 
-\* Pedido 1
+* Pedido 1
 
-\* Pedido 2
+* Pedido 2
 
-\* Pedido 3
+* Pedido 3
 
 
 
-👉 O consumidor pega \*\*um por vez\*\*
+👉 O consumidor pega **um por vez**
 
 
 
@@ -108,15 +108,15 @@ Uma \*\*fila\*\* é literalmente uma fila de espera 🧍🧍🧍
 
 
 
-\## 4️⃣ Exchange (muito importante)
+## 4️⃣ Exchange (muito importante)
 
 
 
-No RabbitMQ, \*\*mensagens nunca vão direto para a fila\*\*.
+No RabbitMQ, **mensagens nunca vão direto para a fila**.
 
 
 
-Elas passam antes por um \*\*Exchange\*\*.
+Elas passam antes por um **Exchange**.
 
 
 
@@ -124,11 +124,11 @@ Elas passam antes por um \*\*Exchange\*\*.
 
 
 
-> Exchange é o \*\*funcionário dos Correios\*\* que decide para qual caixa a carta vai.
+> Exchange é o **funcionário dos Correios** que decide para qual caixa a carta vai.
 
 
 
-O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
+O **tipo de exchange** define **como essa decisão é feita**.
 
 
 
@@ -136,23 +136,23 @@ O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
 
 
 
-\## 5️⃣ Tipos de Exchange (os principais)
+## 5️⃣ Tipos de Exchange (os principais)
 
 
 
-\### 🔹 1. Fanout
+### 🔹 1. Fanout
 
 
 
-\*\*Fanout = espalhar para todos\*\*
+**Fanout = espalhar para todos**
 
 
 
-\* Ignora regras
+* Ignora regras
 
-\* Ignora routing key
+* Ignora routing key
 
-\* Envia a mensagem para \*\*todas as filas conectadas\*\*
+* Envia a mensagem para **todas as filas conectadas**
 
 
 
@@ -168,11 +168,11 @@ O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
 
 
 
-\* Notificações
+* Notificações
 
-\* Broadcast
+* Broadcast
 
-\* Eventos gerais
+* Eventos gerais
 
 
 
@@ -180,17 +180,17 @@ O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
 
 
 
-\### 🔹 2. Direct
+### 🔹 2. Direct
 
 
 
-\*\*Direct = entrega exata\*\*
+**Direct = entrega exata**
 
 
 
-\* A mensagem tem uma \*\*routing key\*\*
+* A mensagem tem uma **routing key**
 
-\* A fila só recebe se a chave for \*\*exatamente igual\*\*
+* A fila só recebe se a chave for **exatamente igual**
 
 
 
@@ -198,11 +198,11 @@ O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
 
 
 
-\* Routing key: `pedido.criado`
+* Routing key: `pedido.criado`
 
-\* Fila aceita: `pedido.criado` ✅
+* Fila aceita: `pedido.criado` ✅
 
-\* Fila aceita: `pedido.\*` ❌
+* Fila aceita: `pedido.*` ❌
 
 
 
@@ -210,9 +210,9 @@ O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
 
 
 
-\* Processos específicos
+* Processos específicos
 
-\* Um tipo de mensagem → uma fila
+* Um tipo de mensagem → uma fila
 
 
 
@@ -220,19 +220,19 @@ O \*\*tipo de exchange\*\* define \*\*como essa decisão é feita\*\*.
 
 
 
-\### 🔹 3. Topic (o mais usado)
+### 🔹 3. Topic (o mais usado)
 
 
 
-\*\*Topic = padrões com curinga\*\*
+**Topic = padrões com curinga**
 
 
 
-Aqui entra o que você citou: \*\*topic, routing key\*\*
+Aqui entra o que você citou: **topic, routing key**
 
 
 
-📌 A routing key é como um \*\*endereço com categorias\*\*
+📌 A routing key é como um **endereço com categorias**
 
 
 
@@ -252,21 +252,21 @@ A fila pode escutar:
 
 
 
-\* `pedido.\*.aprovado`
+* `pedido.*.aprovado`
 
-\* `pedido.#`
+* `pedido.#`
 
-\* `pedido.pagamento.\*`
-
-
-
-\#### Curingas:
+* `pedido.pagamento.*`
 
 
 
-\* `\*` → exatamente \*\*uma palavra\*\*
+#### Curingas:
 
-\* `#` → \*\*zero ou mais palavras\*\*
+
+
+* `*` → exatamente **uma palavra**
+
+* `#` → **zero ou mais palavras**
 
 
 
@@ -282,11 +282,11 @@ A fila pode escutar:
 
 
 
-\* Sistemas grandes
+* Sistemas grandes
 
-\* Eventos
+* Eventos
 
-\* Microsserviços
+* Microsserviços
 
 
 
@@ -294,15 +294,15 @@ A fila pode escutar:
 
 
 
-\### 🔹 4. Headers (menos comum)
+### 🔹 4. Headers (menos comum)
 
 
 
-\* Não usa routing key
+* Não usa routing key
 
-\* Usa \*\*headers\*\* (tipo metadados)
+* Usa **headers** (tipo metadados)
 
-\* Mais flexível, mas mais pesado
+* Mais flexível, mas mais pesado
 
 
 
@@ -310,7 +310,7 @@ A fila pode escutar:
 
 
 
-\* Casos muito específicos
+* Casos muito específicos
 
 
 
@@ -318,11 +318,11 @@ A fila pode escutar:
 
 
 
-\## 6️⃣ Routing Key (bem simples)
+## 6️⃣ Routing Key (bem simples)
 
 
 
-A \*\*routing key\*\* é só uma \*\*string\*\* que diz:
+A **routing key** é só uma **string** que diz:
 
 
 
@@ -342,7 +342,7 @@ log.error.api
 
 
 
-Ela é usada pelo exchange para decidir \*\*quem recebe\*\*.
+Ela é usada pelo exchange para decidir **quem recebe**.
 
 
 
@@ -350,7 +350,7 @@ Ela é usada pelo exchange para decidir \*\*quem recebe\*\*.
 
 
 
-\## 7️⃣ Ciclo de vida de uma mensagem
+## 7️⃣ Ciclo de vida de uma mensagem
 
 
 
@@ -358,67 +358,67 @@ Vamos passo a passo:
 
 
 
-\### 🔁 1. Producer cria a mensagem
+### 🔁 1. Producer cria a mensagem
 
 
 
-\* Texto, JSON, evento, comando
+* Texto, JSON, evento, comando
 
 
 
-\### 📤 2. Producer envia para um Exchange
+### 📤 2. Producer envia para um Exchange
 
 
 
-\* Informa:
+* Informa:
 
 
 
-&nbsp; \* Exchange
+&nbsp; * Exchange
 
-&nbsp; \* Routing key
+&nbsp; * Routing key
 
-&nbsp; \* Conteúdo
-
-
-
-\### 📬 3. Exchange analisa
+&nbsp; * Conteúdo
 
 
 
-\* Olha o tipo (fanout, topic, etc)
-
-\* Decide quais filas recebem
+### 📬 3. Exchange analisa
 
 
 
-\### 📥 4. Mensagem entra na fila
+* Olha o tipo (fanout, topic, etc)
+
+* Decide quais filas recebem
 
 
 
-\* Fica armazenada
-
-\* Espera alguém consumir
+### 📥 4. Mensagem entra na fila
 
 
 
-\### 👷 5. Consumer pega a mensagem
+* Fica armazenada
+
+* Espera alguém consumir
 
 
 
-\* Processa
-
-\* Diz “ok” (ACK)
+### 👷 5. Consumer pega a mensagem
 
 
 
-\### 🗑️ 6. Mensagem é removida
+* Processa
+
+* Diz “ok” (ACK)
 
 
 
-\* Se ACK → some da fila
+### 🗑️ 6. Mensagem é removida
 
-\* Se erro → pode voltar ou ir para DLQ
+
+
+* Se ACK → some da fila
+
+* Se erro → pode voltar ou ir para DLQ
 
 
 
@@ -426,17 +426,17 @@ Vamos passo a passo:
 
 
 
-\## 8️⃣ ACK, NACK e DLQ (bem resumido)
+## 8️⃣ ACK, NACK e DLQ (bem resumido)
 
 
 
-\* \*\*ACK\*\* ✅ → mensagem processada
+* **ACK** ✅ → mensagem processada
 
-\* \*\*NACK\*\* ❌ → erro
+* **NACK** ❌ → erro
 
-\* \*\*Requeue\*\* 🔄 → volta para fila
+* **Requeue** 🔄 → volta para fila
 
-\* \*\*DLQ (Dead Letter Queue)\*\* ☠️
+* **DLQ (Dead Letter Queue)** ☠️
 
 &nbsp; → mensagens que falharam muitas vezes
 
@@ -454,7 +454,7 @@ Vamos passo a passo:
 
 
 
-\## 9️⃣ Tipos de mensagens (conceito)
+## 9️⃣ Tipos de mensagens (conceito)
 
 
 
@@ -462,13 +462,13 @@ RabbitMQ não impõe tipo, mas na prática:
 
 
 
-\* \*\*Evento\*\* → algo aconteceu
+* **Evento** → algo aconteceu
 
-\* \*\*Comando\*\* → faça algo
+* **Comando** → faça algo
 
-\* \*\*Mensagem de log\*\*
+* **Mensagem de log**
 
-\* \*\*Notificação\*\*
+* **Notificação**
 
 
 
@@ -476,11 +476,11 @@ Normalmente em:
 
 
 
-\* JSON
+* JSON
 
-\* Texto
+* Texto
 
-\* Binário
+* Binário
 
 
 
@@ -488,29 +488,29 @@ Normalmente em:
 
 
 
-\## 🔟 Resumo ultra-simples
+## 🔟 Resumo ultra-simples
 
 
 
-\* \*\*AMQP\*\* = regras
+* **AMQP** = regras
 
-\* \*\*RabbitMQ\*\* = sistema
+* **RabbitMQ** = sistema
 
-\* \*\*Producer\*\* = envia
+* **Producer** = envia
 
-\* \*\*Exchange\*\* = decide para onde vai
+* **Exchange** = decide para onde vai
 
-\* \*\*Routing key\*\* = assunto
+* **Routing key** = assunto
 
-\* \*\*Fila\*\* = espera
+* **Fila** = espera
 
-\* \*\*Consumer\*\* = processa
+* **Consumer** = processa
 
-\* \*\*Fanout\*\* = todos recebem
+* **Fanout** = todos recebem
 
-\* \*\*Direct\*\* = correspondência exata
+* **Direct** = correspondência exata
 
-\* \*\*Topic\*\* = padrões com curinga
+* **Topic** = padrões com curinga
 
 
 
@@ -520,15 +520,15 @@ Normalmente em:
 
 
 
-\## 1️⃣ Ideia central (bem simples)
+## 1️⃣ Ideia central (bem simples)
 
 
 
-\### 🐇 RabbitMQ
+### 🐇 RabbitMQ
 
 
 
-👉 \*\*Entrega de mensagens\*\*
+👉 **Entrega de mensagens**
 
 
 
@@ -540,11 +540,11 @@ Pense em:
 
 
 
-\* Focado em \*\*processar tarefas\*\*
+* Focado em **processar tarefas**
 
-\* Mensagem vai, alguém consome, acabou
+* Mensagem vai, alguém consome, acabou
 
-\* Muito usado para \*\*orquestração de sistemas\*\*
+* Muito usado para **orquestração de sistemas**
 
 
 
@@ -552,11 +552,11 @@ Pense em:
 
 
 
-\### 🐘 Kafka
+### 🐘 Kafka
 
 
 
-👉 \*\*Registro de eventos (histórico)\*\*
+👉 **Registro de eventos (histórico)**
 
 
 
@@ -568,43 +568,11 @@ Pense em:
 
 
 
-\* Focado em \*\*eventos\*\*
+* Focado em **eventos**
 
-\* Mensagens ficam guardadas
+* Mensagens ficam guardadas
 
-\* Vários consumidores podem ler \*\*quando quiserem\*\*
-
-
-
----
-
-
-
-\## 2️⃣ Analogia simples
-
-
-
-\### RabbitMQ = Correios
-
-
-
-\* Você manda uma carta
-
-\* Uma pessoa recebe
-
-\* Pronto
-
-
-
-\### Kafka = Diário / Log
-
-
-
-\* Você escreve no diário
-
-\* Qualquer pessoa pode ler
-
-\* Hoje, amanhã, de novo
+* Vários consumidores podem ler **quando quiserem**
 
 
 
@@ -612,29 +580,31 @@ Pense em:
 
 
 
-\## 3️⃣ Diferença MAIS importante
+## 2️⃣ Analogia simples
 
 
 
-\### ❗ RabbitMQ
+### RabbitMQ = Correios
 
 
 
-\* A mensagem \*\*some\*\* depois de consumida (ACK)
+* Você manda uma carta
 
-\* Ideal para \*\*trabalho imediato\*\*
+* Uma pessoa recebe
 
-
-
-\### ❗ Kafka
+* Pronto
 
 
 
-\* A mensagem \*\*não some\*\*
+### Kafka = Diário / Log
 
-\* Fica armazenada por dias, meses
 
-\* Ideal para \*\*histórico e replay\*\*
+
+* Você escreve no diário
+
+* Qualquer pessoa pode ler
+
+* Hoje, amanhã, de novo
 
 
 
@@ -642,7 +612,37 @@ Pense em:
 
 
 
-\## 4️⃣ Quadro comparativo
+## 3️⃣ Diferença MAIS importante
+
+
+
+### ❗ RabbitMQ
+
+
+
+* A mensagem **some** depois de consumida (ACK)
+
+* Ideal para **trabalho imediato**
+
+
+
+### ❗ Kafka
+
+
+
+* A mensagem **não some**
+
+* Fica armazenada por dias, meses
+
+* Ideal para **histórico e replay**
+
+
+
+---
+
+
+
+## 4️⃣ Quadro comparativo
 
 
 
@@ -660,13 +660,13 @@ Pense em:
 
 | Ordem               | Garantida por fila | Garantida por partição |
 
-| Performance         | Boa                | \*\*Altíssima\*\*          |
+| Performance         | Boa                | **Altíssima**          |
 
 | Latência            | Muito baixa        | Baixa                  |
 
-| Escalabilidade      | Média              | \*\*Muito alta\*\*         |
+| Escalabilidade      | Média              | **Muito alta**         |
 
-| Reprocessamento     | Difícil            | \*\*Nativo\*\*             |
+| Reprocessamento     | Difícil            | **Nativo**             |
 
 | Complexidade        | Mais simples       | Mais complexo          |
 
@@ -678,7 +678,7 @@ Pense em:
 
 
 
-\## 5️⃣ Quando usar RabbitMQ
+## 5️⃣ Quando usar RabbitMQ
 
 
 
@@ -686,17 +686,17 @@ Use RabbitMQ quando:
 
 
 
-✅ Você precisa que \*\*alguém faça algo\*\*
+✅ Você precisa que **alguém faça algo**
 
 
 
-\* Enviar e-mail
+* Enviar e-mail
 
-\* Processar pagamento
+* Processar pagamento
 
-\* Gerar PDF
+* Gerar PDF
 
-\* Executar job
+* Executar job
 
 
 
@@ -704,13 +704,13 @@ Use RabbitMQ quando:
 
 
 
-\* ACK / NACK
+* ACK / NACK
 
-\* Retry
+* Retry
 
-\* DLQ
+* DLQ
 
-\* Garantia de entrega
+* Garantia de entrega
 
 
 
@@ -718,7 +718,7 @@ Use RabbitMQ quando:
 
 
 
-> “Quando um pedido for criado, \*\*envie um e-mail\*\*”
+> “Quando um pedido for criado, **envie um e-mail**”
 
 
 
@@ -726,7 +726,7 @@ Use RabbitMQ quando:
 
 
 
-\## 6️⃣ Quando usar Kafka
+## 6️⃣ Quando usar Kafka
 
 
 
@@ -734,17 +734,17 @@ Use Kafka quando:
 
 
 
-✅ Você quer \*\*guardar eventos\*\*
+✅ Você quer **guardar eventos**
 
 
 
-\* Auditoria
+* Auditoria
 
-\* Logs
+* Logs
 
-\* Analytics
+* Analytics
 
-\* Data Lake
+* Data Lake
 
 
 
@@ -752,11 +752,11 @@ Use Kafka quando:
 
 
 
-\* Reprocessar dados
+* Reprocessar dados
 
-\* Ter vários sistemas lendo o mesmo evento
+* Ter vários sistemas lendo o mesmo evento
 
-\* Alto volume (milhões por segundo)
+* Alto volume (milhões por segundo)
 
 
 
@@ -774,11 +774,11 @@ Use Kafka quando:
 
 
 
-\## 7️⃣ Exemplo prático (e-commerce)
+## 7️⃣ Exemplo prático (e-commerce)
 
 
 
-\### 🐇 RabbitMQ
+### 🐇 RabbitMQ
 
 
 
@@ -798,7 +798,7 @@ Pedido criado → fila → serviço de e-mail
 
 
 
-\### 🐘 Kafka
+### 🐘 Kafka
 
 
 
@@ -810,13 +810,13 @@ Pedido criado → tópico → histórico
 
 
 
-\* Sistema de e-mail lê
+* Sistema de e-mail lê
 
-\* Sistema de BI lê
+* Sistema de BI lê
 
-\* Sistema de fraude lê
+* Sistema de fraude lê
 
-\* Amanhã outro sistema lê de novo
+* Amanhã outro sistema lê de novo
 
 
 
@@ -824,7 +824,7 @@ Pedido criado → tópico → histórico
 
 
 
-\## 8️⃣ Erros comuns
+## 8️⃣ Erros comuns
 
 
 
@@ -836,7 +836,7 @@ Pedido criado → tópico → histórico
 
 
 
-👉 Em sistemas grandes, \*\*eles convivem\*\*.
+👉 Em sistemas grandes, **eles convivem**.
 
 
 
@@ -844,11 +844,11 @@ Pedido criado → tópico → histórico
 
 
 
-\## 9️⃣ Regra de ouro (bem simples)
+## 9️⃣ Regra de ouro (bem simples)
 
 
 
-> 🧠 \*\*Pergunta-chave:\*\*
+> 🧠 **Pergunta-chave:**
 
 >
 
@@ -874,7 +874,7 @@ Pedido criado → tópico → histórico
 
 
 
-\## 🐇 RabbitMQ — Diagrama de Fila (mensagem “some”)
+## 🐇 RabbitMQ — Diagrama de Fila (mensagem “some”)
 
 
 
@@ -932,17 +932,17 @@ Pedido criado → tópico → histórico
 
 
 
-\### O que está acontecendo aqui:
+### O que está acontecendo aqui:
 
 
 
-\* A mensagem é \*\*entregue uma vez\*\*
+* A mensagem é **entregue uma vez**
 
-\* Um consumidor processa
+* Um consumidor processa
 
-\* Dá \*\*ACK\*\*
+* Dá **ACK**
 
-\* A mensagem \*\*desaparece\*\*
+* A mensagem **desaparece**
 
 
 
@@ -950,11 +950,11 @@ Pedido criado → tópico → histórico
 
 
 
-\* Jobs
+* Jobs
 
-\* Comandos
+* Comandos
 
-\* Processos imediatos
+* Processos imediatos
 
 
 
@@ -962,7 +962,7 @@ Pedido criado → tópico → histórico
 
 
 
-\## 🐘 Kafka — Diagrama de Log de Eventos (mensagem fica)
+## 🐘 Kafka — Diagrama de Log de Eventos (mensagem fica)
 
 
 
@@ -1006,19 +1006,19 @@ Pedido criado → tópico → histórico
 
 
 
-\### O que está acontecendo aqui:
+### O que está acontecendo aqui:
 
 
 
-\* O evento é \*\*gravado\*\*
+* O evento é **gravado**
 
-\* Fica armazenado
+* Fica armazenado
 
-\* Vários consumidores podem ler
+* Vários consumidores podem ler
 
-\* Cada consumidor lê \*\*no seu ritmo\*\*
+* Cada consumidor lê **no seu ritmo**
 
-\* Pode reler eventos antigos
+* Pode reler eventos antigos
 
 
 
@@ -1026,13 +1026,13 @@ Pedido criado → tópico → histórico
 
 
 
-\* Eventos
+* Eventos
 
-\* Auditoria
+* Auditoria
 
-\* Analytics
+* Analytics
 
-\* Streaming
+* Streaming
 
 
 
@@ -1040,7 +1040,7 @@ Pedido criado → tópico → histórico
 
 
 
-\## 🔁 Comparação lado a lado (visual)
+## 🔁 Comparação lado a lado (visual)
 
 
 
@@ -1086,11 +1086,11 @@ Mensagem some          Mensagem permanece
 
 
 
-\## 🧠 Diferença-chave (em uma frase)
+## 🧠 Diferença-chave (em uma frase)
 
 
 
-\* \*\*RabbitMQ\*\*:
+* **RabbitMQ**:
 
 
 
@@ -1098,7 +1098,7 @@ Mensagem some          Mensagem permanece
 
 
 
-\* \*\*Kafka\*\*:
+* **Kafka**:
 
 
 
@@ -1110,7 +1110,7 @@ Mensagem some          Mensagem permanece
 
 
 
-\## 📌 Regra mental rápida
+## 📌 Regra mental rápida
 
 
 
