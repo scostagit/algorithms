@@ -374,11 +374,11 @@ Vamos passo a passo:
 
 
 
-&nbsp; * Exchange
+ * Exchange
 
-&nbsp; * Routing key
+ * Routing key
 
-&nbsp; * Conteúdo
+ * Conteúdo
 
 
 
@@ -438,7 +438,7 @@ Vamos passo a passo:
 
 * **DLQ (Dead Letter Queue)** ☠️
 
-&nbsp; → mensagens que falharam muitas vezes
+ → mensagens que falharam muitas vezes
 
 
 
@@ -886,9 +886,9 @@ Pedido criado → tópico → histórico
 
 └────┬─────┘
 
-&nbsp;    │  mensagem
+    │  mensagem
 
-&nbsp;    ▼
+    ▼
 
 ┌──────────┐
 
@@ -896,9 +896,9 @@ Pedido criado → tópico → histórico
 
 └────┬─────┘
 
-&nbsp;    │ routing key
+    │ routing key
 
-&nbsp;    ▼
+    ▼
 
 ┌──────────┐
 
@@ -906,9 +906,9 @@ Pedido criado → tópico → histórico
 
 └────┬─────┘
 
-&nbsp;    │
+    │
 
-&nbsp;    ▼
+    ▼
 
 ┌──────────┐
 
@@ -916,15 +916,15 @@ Pedido criado → tópico → histórico
 
 └──────────┘
 
-&nbsp;    │
+    │
 
-&nbsp;    ▼
+    ▼
 
-&nbsp;  \[ ACK ]
+  \[ ACK ]
 
-&nbsp;    │
+    │
 
-&nbsp;    ▼
+    ▼
 
 (mensagem removida da fila)
 
@@ -974,9 +974,9 @@ Pedido criado → tópico → histórico
 
 └────┬─────┘
 
-&nbsp;    │ evento
+    │ evento
 
-&nbsp;    ▼
+    ▼
 
 ┌───────────────────────────┐
 
@@ -990,11 +990,11 @@ Pedido criado → tópico → histórico
 
 └───────────┬──────────────┘
 
-&nbsp;           │
+           │
 
-&nbsp;  ┌────────┼─────────┐
+  ┌────────┼─────────┐
 
-&nbsp;  ▼        ▼         ▼
+  ▼        ▼         ▼
 
 ┌──────┐ ┌──────┐ ┌──────┐
 
@@ -1052,29 +1052,29 @@ RabbitMQ                    Kafka
 
 Producer                    Producer
 
-&nbsp;  │                           │
+  │                           │
 
-&nbsp;  ▼                           ▼
+  ▼                           ▼
 
-&nbsp;Exchange                   Topic
+Exchange                   Topic
 
-&nbsp;  │                           │
+  │                           │
 
-&nbsp;  ▼                           ▼
+  ▼                           ▼
 
-&nbsp;Queue                   Log (partições)
+Queue                   Log (partições)
 
-&nbsp;  │                           │
+  │                           │
 
-&nbsp;  ▼                           ▼
+  ▼                           ▼
 
 Consumer                  Consumer Group
 
-&nbsp;  │                           │
+  │                           │
 
-&nbsp; ACK                     Offset salvo
+ ACK                     Offset salvo
 
-&nbsp;  │                           │
+  │                           │
 
 Mensagem some          Mensagem permanece
 
@@ -1094,7 +1094,7 @@ Mensagem some          Mensagem permanece
 
 
 
-&nbsp; > “Faça isso e esqueça”
+ > “Faça isso e esqueça”
 
 
 
@@ -1102,7 +1102,7 @@ Mensagem some          Mensagem permanece
 
 
 
-&nbsp; > “Isso aconteceu, guarde”
+ > “Isso aconteceu, guarde”
 
 
 
